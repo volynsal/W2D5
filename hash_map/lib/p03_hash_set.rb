@@ -7,12 +7,23 @@ class HashSet
   end
 
   def insert(key)
+    resize! if @count >= @store.length
+    pos = key.hash % @store.length
+    @store[pos] << key
+    @count += 1
   end
 
   def include?(key)
+    pos = key.hash % @store.length
+    @store[pos].first == key
   end
 
   def remove(key)
+    if self.include?(key)
+      pos = key.hash % @store.length
+      @store[pos].pop
+      @count -= 1
+    end
   end
 
   private
@@ -26,5 +37,12 @@ class HashSet
   end
 
   def resize!
+    old_store = @store.flatten
+    @store = Array.new(num_buckets) { Array.new }
+    (@store.length).times {@store.push([])}
+    @count = 0
+    old_store.each do |key|
+      self.insert(key)
+    end
   end
 end

@@ -10,7 +10,7 @@ class Node
   end
 
   def to_s
-    "#{@key}: #{@val}"
+    "#{@key}: #{@val}" 
   end
 
   def remove
@@ -20,7 +20,14 @@ class Node
 end
 
 class LinkedList
+  include Enumerable
+  
   def initialize
+    @head = Node.new()
+    @tail = Node.new()
+
+    @head.next = @tail
+    @tail.prev = @head
   end
 
   def [](i)
@@ -34,7 +41,8 @@ class LinkedList
   def last
   end
 
-  def empty?
+  def empty? 
+    @head.next == @tail
   end
 
   def get(key)
