@@ -1,0 +1,30 @@
+div {
+  width: 200px;
+  height: 200px;
+  padding: 50px; 
+  border: 5px solid black;
+  
+}
+
+#children_of_div {
+
+  height: fit-content;
+  width: 400px;
+  background-color: lightgoldenrodyellow;
+  overflow: 
+}
+
+#first-div {
+  background-color: #39cccc;
+}
+
+#second-div {
+  background-color: #ff4136;
+  box-sizing: border-box;
+}
+
+p {
+  font-size: 2em;
+  background-color: #7fdbff;
+}
+
